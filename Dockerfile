@@ -1,6 +1,8 @@
-FROM docker:20
-RUN apk update
-RUN apk add openjdk8-jre
-RUN apk add maven
-RUN apk add git
-RUN apk add curl
+FROM centos:7
+RUN yum update -y
+RUN yum install java-1.8.0-openjdk-devel -y
+RUN yum install maven -y
+RUN yum install -y yum-utils
+RUN yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+RUN yum install -y docker-ce docker-ce-cli containerd.io
+RUN yum install -y git
